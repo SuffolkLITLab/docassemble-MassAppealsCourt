@@ -99,7 +99,7 @@ fields:
     code: states_list()
   - Zip: users[0].address.zip 
 ---
-id: appeals_contact information
+id: contact information
 question: |
   Contact information
 subquestion: |
@@ -109,9 +109,16 @@ fields:
     required: False
   - Other phone number: users[0].phone_number
     required: False
+  - Other ways to reach you: users[0].other_contact_method
+    input type: area
+    required: False
+    help: |
+      If you do not have a phone number or email the court can use, provide specific contact instructions. For example, use a friend's phone number.
+      But the friend must be someone you can rely on to tell you the court is trying to reach you.
 validation code: |
-  if (not showifdef('users[0].phone_number') and 
-      (not showifdef('users[0].mobile_number'))):
+  if (not showifdef('users[0].phone_number')) and \
+      (not showifdef('users[0].mobile_number')) and \
+      (not showifdef('users[0].other_contact_method')):
     validation_error(word("You need to provide at least one other contact method."))
 ---
 need:
