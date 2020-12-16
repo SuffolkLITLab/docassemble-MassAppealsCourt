@@ -224,3 +224,38 @@ code: |
       email_success = send_email(to=email_to_use, template=email_to_court_template, task='send email', attachments=final_form_to_file)
     mark_task_as_performed('send email')
   sent_email_to_court = True
+---
+id: user role
+question: |
+  Did you file the first forms in the trial court, or did you respond to a case
+  that someone else started?
+fields:
+  - no label: user_ask_role
+    datatype: radio
+    choices:
+      - I started the case: plaintiff
+      - I responded to the case: defendant
+  - note: |
+      Okay, you are the **Plaintiff** or Petitioner in the trial court. The other
+      side is the **Defendant** or Respondent.
+    show if:
+      variable: user_ask_role
+      is: "plaintiff"
+  - note: |
+      Okay, you are the **Defendant** or Respondent in the trial court. The other
+      side is the **Plaintiff** or Petitioner.
+    show if:
+      variable: user_ask_role
+      is: "defendant"
+help:
+  label: |
+    How do I know?
+  content: |
+    We need to know if you are the "Plaintiff" or the "Defendant" in your
+    trial court case.
+
+    If you are the first person to file a form in the case, you are the
+    "Plaintiff" or the "Petitioner."
+
+    If you are responding to a case or court papers someone else filed, you are
+    the "Defendant" or the "Respondent."
