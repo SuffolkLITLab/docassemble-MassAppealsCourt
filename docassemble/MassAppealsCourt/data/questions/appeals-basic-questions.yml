@@ -198,6 +198,7 @@ fields:
   - My preferred language is: user_preferred_language
     show if: user_needs_interpreter
 ---
+id: Appeals send to court
 comment: |
   Send to court code--tweaked slightly for MAC
 need:
@@ -227,7 +228,7 @@ code: |
 ---
 id: user role
 question: |
-  Did you file the first forms in the trial court, or did you respond to a case
+  In the trial court, did you file the first forms, or did you respond to a case
   that someone else started?
 fields:
   - no label: user_ask_role
@@ -251,11 +252,15 @@ help:
   label: |
     How do I know?
   content: |
-    We need to know if you are the "Plaintiff" or the "Defendant" in your
-    trial court case.
-
     If you are the first person to file a form in the case, you are the
     "Plaintiff" or the "Petitioner."
 
     If you are responding to a case or court papers someone else filed, you are
     the "Defendant" or the "Respondent."
+---
+id: appeals docket numbers
+question: |
+  Do you have an Appeals Court docket number for this case?
+subquestion: |
+  This should _not_ be the docket number for the trial court case.
+yesno: docket_numbers.there_are_any
