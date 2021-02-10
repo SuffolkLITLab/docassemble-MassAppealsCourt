@@ -198,6 +198,7 @@ fields:
   - My preferred language is: user_preferred_language
     show if: user_needs_interpreter
 ---
+id: Appeals send to court
 comment: |
   Send to court code--tweaked slightly for MAC
 need:
@@ -224,3 +225,44 @@ code: |
       email_success = send_email(to=email_to_use, template=email_to_court_template, task='send email', attachments=final_form_to_file)
     mark_task_as_performed('send email')
   sent_email_to_court = True
+---
+id: user role
+question: |
+  In the trial court, did you file the first forms, or did you respond to a case
+  that someone else started?
+fields:
+  - no label: user_ask_role
+    datatype: radio
+    choices:
+      - I started the case: plaintiff
+      - I responded to the case: defendant
+  - note: |
+      Okay, you are the **Plaintiff** or Petitioner in the trial court. The other
+      side is the **Defendant** or Respondent.
+    show if:
+      variable: user_ask_role
+      is: "plaintiff"
+  - note: |
+      Okay, you are the **Defendant** or Respondent in the trial court. The other
+      side is the **Plaintiff** or Petitioner.
+    show if:
+      variable: user_ask_role
+      is: "defendant"
+help:
+  label: |
+    How do I know?
+  content: |
+    If you are the first person to file a form in the case, you are the
+    "Plaintiff" or the "Petitioner."
+
+    If you are responding to a case or court papers someone else filed, you are
+    the "Defendant" or the "Respondent."
+---
+id: appeals docket number
+question: |
+  What is the docket number for your Appeals Court case? 
+subquestion: |
+  This should _not_ be the docket number for the trial court case.
+fields:
+  - no label: appeals_docket_number
+    required: True
