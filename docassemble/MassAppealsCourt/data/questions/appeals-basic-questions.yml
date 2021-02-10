@@ -258,9 +258,11 @@ help:
     If you are responding to a case or court papers someone else filed, you are
     the "Defendant" or the "Respondent."
 ---
-id: appeals docket numbers
+id: appeals docket number
 question: |
-  Do you have an Appeals Court docket number for this case?
+  What is the docket number for your Appeals Court case? 
 subquestion: |
   This should _not_ be the docket number for the trial court case.
-yesno: docket_numbers.there_are_any
+fields:
+  - no label: appeals_docket_number
+    required: True
