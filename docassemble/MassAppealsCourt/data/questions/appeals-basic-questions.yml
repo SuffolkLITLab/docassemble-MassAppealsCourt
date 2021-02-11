@@ -1,4 +1,7 @@
 ---
+modules:
+  - .ma_appeals_specific_logic
+---
 code: |
   courts[0] = macourts.matching_appeals_court("")
 ---
@@ -266,3 +269,14 @@ subquestion: |
 fields:
   - no label: appeals_docket_number
     required: True
+---
+id: attorney bbo
+question: |
+  What is ${ attorneys[i].possessive('BBO number') }?
+fields:
+  - BBO: attorneys[i].id_number
+    required: True
+    validate: is_bbo_number
+auto terms:
+  BBO number: |
+    Board of Bar Overseers, a regulatory board that tracks lawyers. All Massachusetts lawyers will have this number.
