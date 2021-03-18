@@ -136,39 +136,41 @@ question: |
   Final Review With Cover Page
 subquestion: |
   
-  Below is your ${comma_and_list(al_download_titles)} document with the
-  cover page that we will deliver to ${courts[0]}.
+  Below is your document with the 
+  cover page that we will deliver to the ${courts[0]}.
   
   Click "Back" if you need to make any changes.  
-  Click "Send to court" to deliver it.
+  Click "Send to the ${courts[0]}" to deliver it.
   
   % if users[0].email:
   **By sending this form to the court, you agree that you
   will get notices from the court by email.** If you do not want to receive
-  notices by email, click "Back", download your form, and send it to court
-  by mail or by dropping it off.
+  notices by email, click "Back", download your form, and mail it to the court
+  or drop it off.
   % endif
   
-  Here is what the clerk at ${courts} will get:
+  Here is what the clerk at the ${courts} will get:
 
-  ${ all_final_forms_combined }
-  [:file-download: Download this form with cover page](${all_final_forms_combined.url_for(attachment=True)})
+  [:file-download: Download your form with cover page](${all_final_forms_combined.url_for(attachment=True)})
 
   % if found_email:
   We will deliver it securely. Please allow up to 15 minutes for the email to
   arrive.
   % else:
-  There was a problem delivering this to the ${courts[0]}. We couldn't
+  There was a problem delivering this to the ${courts[0]}. We could not
   locate the contact information for this court.
   % endif
  
-  Press below to deliver the form.
+  Click below to deliver the form.
 fields:
   - no label: acknowledge_email_notices
     datatype: checkboxes
     choices:
-      - I understand that I will get notices from the court by email
+      - I understand that I will get notices from the court by email.
     minlength: 1
+    validation messages:
+       minlength: |
+         If you do not want to receive notices by email, click "Back", download your form, and and mail it to the court or drop it off.
     show if: 
       code: |
         users[0].email
@@ -179,7 +181,7 @@ fields:
     show if: should_cc_user
     default: ${users[0].email if defined('users[0].email') else ''}
 continue button field: ready_to_email
-continue button label: Send to court
+continue button label: Send to the ${courts[0]}
 ---
 id: interpreter
 comment: |
@@ -226,8 +228,8 @@ code: |
 ---
 id: user role
 question: |
-  In the trial court, did you file the first forms, or did you respond to a case
-  that someone else started?
+  In the **Trial Court**, did you file the first forms, or did you respond to a 
+  case that someone else started?
 fields:
   - no label: user_ask_role
     datatype: radio
@@ -258,7 +260,7 @@ help:
 ---
 id: appeals docket number
 question: |
-  What is the docket number for your Appeals Court case? 
+  What is the docket number for your Appeal's Court case? 
 subquestion: |
   This should _not_ be the docket number for the trial court case.
 fields:
