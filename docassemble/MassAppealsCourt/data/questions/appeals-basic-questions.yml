@@ -65,7 +65,7 @@ question: |
   % if email_success:
   Your form is on its way.
   % else:
-  Something went wrong delivering your form.
+  Something went wrong delivering your form
   % endif
 subquestion: |
   % if email_success:
@@ -137,7 +137,7 @@ question: |
 subquestion: |
   
   Below is your document with the 
-  cover page that will be delivered to the ${courts[0]}.
+  cover page that we will deliver to the ${courts[0]}.
   
   Click "Back" if you need to make any changes.  
   Click "Send to the ${courts[0]}" to deliver it.
@@ -145,8 +145,8 @@ subquestion: |
   % if users[0].email:
   **By sending this form to the court, you agree that you
   will get notices from the court by email.** If you do not want to receive
-  notices by email, click "Back", download your form, and send it to court
-  by mail or drop it off.
+  notices by email, click "Back", download your form, and mail it to the court
+  or drop it off.
   % endif
   
   Here is what the clerk at the ${courts} will get:
@@ -170,7 +170,7 @@ fields:
     minlength: 1
     validation messages:
        minlength: |
-         If you do not want to receive notices by email, click "Back", download your form, and send it to the court by mail or drop it off.
+         If you do not want to receive notices by email, click "Back", download your form, and and mail it to the court or drop it off.
     show if: 
       code: |
         users[0].email
