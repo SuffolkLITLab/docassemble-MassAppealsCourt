@@ -7,7 +7,7 @@ code: |
   courts[0] = all_courts.matching_appeals_court("")
 ---
 code: |
-  court_email = court_emails.get(court[0].name, None)
+  court_email = court_emails.get(courts[0].name, None)
   if not court_email:
     found_email = False
   else:
