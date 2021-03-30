@@ -4,7 +4,18 @@ modules:
   - .ma_appeals_specific_logic
 ---
 code: |
-  courts[0] = macourts.matching_appeals_court("")
+  courts[0] = all_courts.matching_appeals_court("")
+---
+code: |
+  court_email = court_emails.get(courts[0].name, None)
+  if not court_email:
+    found_email = False
+  else:
+    found_email = True
+---
+attachment:
+  variable name: al_cover_page[i]
+  docx template file: appeals_cover_sheet.docx
 ---
 id: appeals basic questions intro screen
 question: |
@@ -213,7 +224,7 @@ code: |
     email_to_use = dev_email_to_use
   
   if task_not_yet_performed('send email'):
-    log("Court email is " + court_email)
+    log("Court email is ".format(court_email))
     email_success = False
     if should_cc_user:
       log('Sending email to {} and ccing {} for {}'.format(email_to_use, cc_email, str(users)))
