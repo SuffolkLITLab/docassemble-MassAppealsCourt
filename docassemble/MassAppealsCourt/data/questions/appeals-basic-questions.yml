@@ -17,6 +17,9 @@ attachment:
   variable name: al_cover_page[i]
   docx template file: appeals_cover_sheet.docx
 ---
+code: | 
+  appeals_court = all_courts.matching_appeals_court("")
+---
 id: appeals basic questions intro screen
 question: |
   ${interview_short_title}: Mass Access Project
