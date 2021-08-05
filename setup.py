@@ -43,7 +43,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
     return out
 
 setup(name='docassemble.MassAppealsCourt',
-      version='0.0.4',
+      version='0.1.0',
       description=('A docassemble extension.'),
       long_description='# docassemble.MassAppealsCourt\r\n\r\nA docassemble extension.\r\n\r\n## Author\r\n\r\nSystem Administrator, admin@admin.com\r\n\r\n',
       long_description_content_type='text/markdown',
@@ -53,7 +53,7 @@ setup(name='docassemble.MassAppealsCourt',
       url='https://docassemble.org',
       packages=find_packages(),
       namespace_packages=['docassemble'],
-      install_requires=['docassemble.MAVirtualCourt>=1.0.20'],
+      install_requires=['docassemble.MAVirtualCourt>=1.0.22'],
       zip_safe=False,
       package_data=find_package_data(where='docassemble/MassAppealsCourt/', package='docassemble.MassAppealsCourt'),
      )
