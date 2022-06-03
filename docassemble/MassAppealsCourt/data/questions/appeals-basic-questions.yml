@@ -5,6 +5,7 @@ modules:
 ---
 code: |
   courts[0] = all_courts.matching_appeals_court("")
+  appeals_court = courts[0] 
 ---
 code: |
   court_email = court_emails.get(courts[0].name, None)
@@ -16,9 +17,6 @@ code: |
 attachment:
   variable name: al_cover_page[i]
   docx template file: appeals_cover_sheet.docx
----
-code: | 
-  appeals_court = all_courts.matching_appeals_court("")
 ---
 id: appeals basic questions intro screen
 question: |
