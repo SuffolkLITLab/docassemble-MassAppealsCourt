@@ -1,0 +1,36 @@
+id: ready to efile
+question: |
+  Final review before e-filing
+subquestion: |
+  
+  % if ready_to_efile:
+  Below is your ${comma_and_list(al_court_bundle.get_titles())} document with the 
+  cover page that we will deliver to ${appeals_court}.
+
+  We will deliver it securely. Please allow up to 15 minutes for the filing to
+  arrive. We will email with a confirmation that it was delivered, and some additional
+  information that you should hang on to.
+  
+  Click "Back" if you need to make any changes.
+  Click "Send to court" to deliver it.
+  
+  Here is what the clerk at ${appeals_court} will get:
+  % else:
+
+  We ran into some technical problems and there was a problem delivering this to the ${appeals_court}.
+  You can download the form below to print and submit.
+
+  % endif
+
+  ${ al_court_bundle.as_pdf() }
+
+  % if ready_to_efile:
+  Press below to deliver the form.
+  % endif
+continue button field: efile_user_reviewed
+continue button label: Send to court
+---
+depends on:
+  - appeals_court
+code: |  
+  court_id = convert_court_to_id(appeals_court)
