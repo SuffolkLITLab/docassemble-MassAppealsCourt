@@ -32,16 +32,30 @@ continue button label: Send to court
 ---
 id: user-wants-efile
 question: |
-  Do you want to efile this document directly with the court?
+  Do you want to e-file this document directly with the court?
 subquestion: |
   You are able to electronically-file (e-file) this document with the Appeals Court!
   This means you don't have to print out the document. The court
   will communicate with you through your email or phone.
-  You will have to provide your email to e-file this document. If you don't wish to provide that,
+
+  You will have to use your eFileMA account to e-file this document. 
+  If you don't wish to use your account or don't wish to make an account,
   you can choose not to efile.
+
+  If you don't have a eFileMA account, you can make one in the next screens.
 fields:
-  - Do you want to efile?: user_wants_efile
+  - Do you want to e-file?: user_wants_efile
     datatype: yesnoradio
+---
+id: you-will-not-be-able-to-efile
+question: |
+  You will *not* be able to efile this document
+subquestion: |
+  Something expected happened when setting up e-filing, and unfortunately,
+  you won't be able to efile this document with the Appeals Court.
+
+  However, you are still be able to continue and download a completed form.
+continue button field: show_no_efile
 ---
 depends on:
   - appeals_court
