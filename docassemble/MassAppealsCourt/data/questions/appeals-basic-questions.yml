@@ -178,6 +178,7 @@ need:
   - email_to_court_template
   - court_email
   - should_cc_user
+  - al_final_form_to_file
 code: |
   if will_send_to_real_court():
     email_to_use = court_email
@@ -190,7 +191,7 @@ code: |
     if should_cc_user:
       log('Sending email to {} and ccing {} for {}'.format(email_to_use, cc_email, str(users)))
       email_success = send_email(to=email_to_use, template=email_to_court_template, task='send email', 
-                                 cc=cc_email, attachments=al_final_form_to_file.as_pdf_list(key='final')) # True # until we're ready to turn this on
+                                 cc=cc_email, attachments=al_final_form_to_file.as_pdf_list(key='final'))
     else:
       log('Sending email to {} and no cc for {}'.format(email_to_use, str(users)))
       email_success = send_email(to=email_to_use, template=email_to_court_template, task='send email', 
