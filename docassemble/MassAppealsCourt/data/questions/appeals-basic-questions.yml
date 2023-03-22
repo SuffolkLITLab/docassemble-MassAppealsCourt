@@ -185,7 +185,7 @@ code: |
     email_to_use = dev_email_to_use
   
   if task_not_yet_performed('send email'):
-    log("Court email is ".format(court_email))
+    log(f"Court email is {court_email}, sending to {email_to_use}")
     email_success = False
     if should_cc_user:
       log('Sending email to {} and ccing {} for {}'.format(email_to_use, cc_email, str(users)))
