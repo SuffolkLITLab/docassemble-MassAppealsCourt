@@ -107,7 +107,6 @@ id: ready to email
 question: |
   Final Review With Cover Page
 subquestion: |
-  
   Below is your document with the 
   cover page that we will deliver to the ${courts[0]}.
   
