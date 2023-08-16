@@ -2,7 +2,6 @@ id: ready to efile
 question: |
   Final review before e-filing
 subquestion: |
-  
   % if ready_to_efile:
   Below is your ${comma_and_list(al_court_bundle.get_titles())} document 
   that we will deliver to ${appeals_court}.
