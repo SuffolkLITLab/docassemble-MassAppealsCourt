@@ -1,8 +1,11 @@
 # docassemble.MassAppealsCourt
 
-A docassemble extension.
+A docassemble extension for Assembly Line forms for the Massachusetts Appeals Court.
 
 ## Author
 
-System Administrator, admin@admin.com
+Quinten Steenhuis
+Bryce Willey
+Mia Bonardi
+Aubrie Souza
 
