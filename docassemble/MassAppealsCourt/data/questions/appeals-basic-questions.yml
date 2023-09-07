@@ -22,7 +22,7 @@ id: appeals basic questions intro screen
 question: |
   ${interview_short_title}: Mass Access Project
 subquestion: |
-  % if form_approved_for_email_filing:
+  % if form_approved_for_email_filing or form_uses_efiling:
   The MassAccess Project can help you complete and file court forms in 3 steps:
   % else:
   The MassAccess Project can help you complete and download forms in 3 steps:
@@ -33,6 +33,9 @@ subquestion: |
   % if form_approved_for_email_filing:  
   Step 3. Email the form to the court using this secure website and save copies
   for yourself for later reference.  
+  % elif form_uses_efiling:
+  Step 3. Electronically file the form to the court using this secure website and save
+  copies for yourself for later reference.  
   % else:
   Step 3. Download and print the final form. You will need to deliver it
   to the court on your own.
@@ -41,10 +44,12 @@ subquestion: |
   Tap the {green words} in any screen for a definition or more information.
   
   If you have questions about this form or the court process, 
-  call the Appeals Court Clerk's Office:  
-  617-921-4443 
+  call the Appeals Court Clerk's Office:
+
+  617-921-4443  
   Monday-Friday  
   8:30am - 4:30pm
+
   % if chat_partners_available().help:
   Live help is currently available in this interview. Click the speech bubble
   (:comment-alt:) in the navigation bar to connect to a live advocate for help.
@@ -52,13 +57,13 @@ subquestion: |
 fields:
   - To continue, you must accept the [terms of use](https://massaccess.suffolklitlab.org/privacy/): acknowledged_information_use
     datatype: checkboxes
-    none of the above: False    
+    none of the above: False
     minlength: 1
     choices:
       - I accept the terms of use.
     validation messages:
       minlength: |
-        You cannot continue unless you agree to the terms of use.        
+        You cannot continue unless you agree to the terms of use.
 continue button field: appeals_basic_questions_intro_screen
 terms:
   green words: |
@@ -70,6 +75,10 @@ right: |
   
   ${action_button_html(url_action('load_answer'), icon="folder-open", label=word("View answers"), size="sm" )}
   % endif
+---
+# If this is ever set to true, you need to include `efiling_integration.yml`
+code: |
+  form_uses_efiling = False
 ---
 need: sent_email_to_court
 id: email status
