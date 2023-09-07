@@ -22,7 +22,7 @@ id: appeals basic questions intro screen
 question: |
   ${interview_short_title}: Mass Access Project
 subquestion: |
-  % if form_approved_for_email_filing or (form_uses_efiling and efile_setup):
+  % if form_approved_for_email_filing or form_uses_efiling:
   The MassAccess Project can help you complete and file court forms in 3 steps:
   % else:
   The MassAccess Project can help you complete and download forms in 3 steps:
@@ -33,7 +33,7 @@ subquestion: |
   % if form_approved_for_email_filing:  
   Step 3. Email the form to the court using this secure website and save copies
   for yourself for later reference.  
-  % elif form_uses_efiling and efile_setup:
+  % elif form_uses_efiling:
   Step 3. Electronically file the form to the court using this secure website and save
   copies for yourself for later reference.  
   % else:
