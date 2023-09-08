@@ -28,7 +28,7 @@ subquestion: |
   We will also include these comments to the clerk:
 
   <blockquote class="blockquote">
-  ${ comments_to_clerk }
+  ${ comments_to_clerk.replace("\n", "<br/>") }
   </blockquote>
   % endif
 
