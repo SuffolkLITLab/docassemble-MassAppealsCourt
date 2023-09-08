@@ -27,7 +27,9 @@ subquestion: |
   % if defined("comments_to_clerk") and comments_to_clerk:
   We will also include these comments to the clerk:
 
-  > ${ comments_to_clerk }
+  <blockquote class="blockquote">
+  ${ comments_to_clerk }
+  </blockquote>
   % endif
 
   Click "Send to court" below to deliver the forms.
